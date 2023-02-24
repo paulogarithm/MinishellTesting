@@ -1,23 +1,27 @@
 :: Read the readme file before adding new tests
 
->>> Basics tests
+>>> Required
 
 > Functionnal ls
 echo -ne "ls"
 
-> Bad ls
-echo -ne "ls nofile"
-
 > Multiple commands
 echo -ne "ls\nls"
+
+>>> End
+
+>>> Basics tests
+
+> Bad ls
+echo -ne "ls nofile"
 
 > Empty string
 echo -ne ""
 
-> Exit
+> (Run) Exit
 echo -ne "exit"
 
-> Really Exiting
+> Exit
 echo -ne "exit\nls"
 
 > Empty Env
@@ -95,6 +99,9 @@ echo -ne "cd -"
 
 > Setenv too many args
 echo -ne "setenv a a a"
+
+> Setenv incorrect variable
+echo -ne "setenv -"
 
 > Unsetenv too few args
 echo -ne "unsetenv"

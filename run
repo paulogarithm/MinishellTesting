@@ -8,13 +8,13 @@ from my_color import *
 
 
 thisdir = os.path.dirname(os.path.realpath(__file__))
-
 f_command = f"{thisdir}/commands.txt"
 
+final_results = []
 
 def create_bar(percentage: int, name: str) -> str:
 
-    show_percentage = (str(percentage) + "%").ljust(4) if percentage < 100 else "DONE".ljust(4)
+    show_percentage = (str(percentage) + "%").ljust(4) if percentage < 100 else "Done".ljust(4)
     number = math.ceil((percentage / 100) * 20)
     fill = '=' * number
     fill = fill[:-1] + '>' if percentage != 100 else fill
@@ -29,7 +29,7 @@ def create_bar(percentage: int, name: str) -> str:
 
 
 def display(n: float, name: str):
-    print("\n{}\n".format(create_bar(round(n * 100), name)))
+    print("{}".format(create_bar(round(n * 100), name)))
 
 def my_tests() -> float:
     f = open(f_command, "r+")
@@ -47,10 +47,13 @@ def my_tests() -> float:
         if command[0:4] == ">>> ":
             name = command[4:len(command)]
             if name.lower() == "end":
-                display(sum(array) / len(array), testing_cathegory)
+                results = [sum(array) / len(array), testing_cathegory]
+                final_results.append(results)
                 array, name, testing_cathegory, i = [], "", "", 2
+                print()
             else:
                 testing_cathegory, i = name, 2
+                print(testing_cathegory.upper() + ":")
             continue   
         if command[0:2] == '$ ':
             beforecommand = command[2:len(command)]
@@ -77,4 +80,6 @@ def my_tests() -> float:
 if __name__ == "__main__":
     subprocess.run(["make", "-s", "re"])
     subprocess.run(["make", "-s", "clean"])
+    print()
     my_tests()
+    [display(x[0], x[1]) for x in final_results]
