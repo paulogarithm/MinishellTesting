@@ -6,13 +6,13 @@ Clone this repo in your minishell folder by using this command :<br/>
 
 You should now have something like this
 ```
-[foo minishell]$ ls
+[minishell] $ ls
 lib  Makefile  src
 
-[foo minishell]$ git clone git@github.com:paulogarithm/MinishellTesting.git
+[minishell] $ git clone git@github.com:paulogarithm/MinishellTesting.git
 ...
 
-[foo minishell]$ ls
+[minishell] $ ls
 lib  Makefile  MinishellTesting  src
 ```
 
