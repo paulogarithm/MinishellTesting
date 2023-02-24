@@ -107,12 +107,12 @@ echo -ne "setenv -"
 echo -ne "unsetenv"
 
 > Segfault
-echo -ne tests/bin/segfault.out
+echo -ne MinishellTesting/bin/segfault.out
 
 > Broken
-echo -ne tests/bin/broken.out
+echo -ne MinishellTesting/bin/broken.out
 
 > Floating
-echo -ne tests/bin/floating.out
+echo -ne MinishellTesting/bin/floating.out
 
 >>> End
