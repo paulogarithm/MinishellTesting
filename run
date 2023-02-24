@@ -5,7 +5,7 @@ import subprocess
 import math
 
 from my_color import *
-
+from my_box import *
 
 thisdir = os.path.dirname(os.path.realpath(__file__))
 f_command = f"{thisdir}/commands.txt"
@@ -72,6 +72,22 @@ def my_tests() -> float:
 
         res = valid_output == your_output
         array.append(res)
+
+        if not res:
+            f = open(f"{thisdir}/test.log", "a")
+            f.write(name + ":\n")
+
+            box1, size1 = box_that("Yours", your_output.split('\n'))
+            box2, size2 = box_that("Correct", valid_output.split('\n'))
+
+            if size2 > size1:
+                box1, size1 = box_that("Yours", your_output.split('\n'), size2)
+            else:
+                box2, size2 = box_that("Correct", valid_output.split('\n'), size1)
+            f.write(box1)
+            f.write(box2 + "\n\n")
+
+
         showing = f"{my_color.green}[S]{my_color.default}" if res else f"{my_color.red} [X]{my_color.default}"
         showing = showing.ljust(16).rjust(17)
         print(f"{showing} {name}")
@@ -80,6 +96,10 @@ def my_tests() -> float:
 if __name__ == "__main__":
     subprocess.run(["make", "-s", "re"])
     subprocess.run(["make", "-s", "clean"])
+
+    if os.path.exists(f"{thisdir}/test.log"):
+        os.remove(f"{thisdir}/test.log")
+
     print()
     my_tests()
     [display(x[0], x[1]) for x in final_results]
