@@ -45,9 +45,12 @@ The way the line will be executed is as follow :<br/>
 Terminal is replaced by `tcsh` and `./mysh`.<br/>
 Then the result of both function are compared.
 
-After all the tests in a cathegory are passed, the result is showed with a progress bar.
+After all the tests are passed, you get a resume of all cathegories and an overall one.
 ```
-75%  [===============>    ] Cathegory
+75%  [===============>    ] Cathegory 1
+25%  [=====>              ] Cathegory 2
+
+50%  [==========>         ] Overall
 ```
 
 
