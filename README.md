@@ -1,18 +1,11 @@
 # MinishellTesting
 
 ## How to get it ?
-<<<<<<< HEAD
-Clone this repo in your minishell folder by using this command :
-=======
 Clone this repo in your minishell folder by using this command :<br/>
->>>>>>> refs/remotes/origin/main
 `git clone git@github.com:paulogarithm/MinishellTesting.git`
 
 You should now have something like this
 ```
-<<<<<<< HEAD
-minishell/ $> ls
-=======
 [minishell] $ ls
 lib  Makefile  src
 
@@ -20,14 +13,10 @@ lib  Makefile  src
 ...
 
 [minishell] $ ls
->>>>>>> refs/remotes/origin/main
 lib  Makefile  MinishellTesting  src
 ```
 
 ## How does it works ?
-<<<<<<< HEAD
-To run the tests, simply do `./MinishellTesting/run`
-=======
 To run the tests, simply do `./MinishellTesting/run`.
 
 To made your own test, you can configure the **command.txt**'s file.
@@ -75,4 +64,3 @@ To add them in your test, you can use the $ sign followed by a space like this i
 $ Subcommand
 Command
 ```
->>>>>>> refs/remotes/origin/main
