@@ -7,8 +7,10 @@ import math
 from my_color import *
 from my_box import *
 
-thisdir = os.path.dirname(os.path.realpath(__file__))
-f_command = f"{thisdir}/commands.txt"
+d_source = os.path.dirname(os.path.realpath(__file__))
+d_dir = os.path.dirname(d_source)
+d_config = f"{d_dir}/config"
+f_command = f"{d_config}/commands.txt"
 
 final_results = []
 
@@ -74,7 +76,7 @@ def my_tests() -> float:
         array.append(res)
 
         if not res:
-            f = open(f"{thisdir}/test.log", "a")
+            f = open(f"{d_config}/test.log", "a")
             f.write(name + ":\n")
 
             box1, size1 = box_that("Yours", your_output.split('\n'))
@@ -97,8 +99,8 @@ if __name__ == "__main__":
     subprocess.run(["make", "-s", "re"])
     subprocess.run(["make", "-s", "clean"])
 
-    if os.path.exists(f"{thisdir}/test.log"):
-        os.remove(f"{thisdir}/test.log")
+    if os.path.exists(f"{d_config}/test.log"):
+        os.remove(f"{d_config}/test.log")
 
     print()
     my_tests()
