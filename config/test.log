@@ -1,60 +1,23 @@
-(Run) Exit:
-┌ Yours ──────┐
-│ exit        │
-└─────────────┘
-┌ Correct ────┐
-│             │
-└─────────────┘
-
-
-Exit:
-┌ Yours ──────┐
-│ exit        │
-│ lib         │
-│ Makefile    │
-│ mysh        │
-│ src         │
-│ tests       │
-└─────────────┘
-┌ Correct ────┐
-│             │
-└─────────────┘
-
-
-Empty Env:
-┌ Yours ───────────────────┐
-│ Could not find HOME env. │
-│ Couldnt find PATH env.   │
-└──────────────────────────┘
-┌ Correct ─────────────────┐
-│ Makefile                 │
-│ lib                      │
-│ mysh                     │
-│ src                      │
-│ tests                    │
-└──────────────────────────┘
-
-
 Unset Path:
 ┌ Yours ─────────────────┐
 │ lib                    │
 │ Makefile               │
+│ MinishellTesting       │
 │ mysh                   │
 │ src                    │
-│ tests                  │
 │ Couldnt find PATH env. │
 └────────────────────────┘
 ┌ Correct ───────────────┐
 │ lib                    │
 │ Makefile               │
+│ MinishellTesting       │
 │ mysh                   │
 │ src                    │
-│ tests                  │
 │ lib                    │
 │ Makefile               │
+│ MinishellTesting       │
 │ mysh                   │
 │ src                    │
-│ tests                  │
 └────────────────────────┘
 
 
