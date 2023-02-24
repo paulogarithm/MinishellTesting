@@ -19,7 +19,8 @@ lib  Makefile  MinishellTesting  src
 ## How does it works ?
 To run the tests, simply do `./MinishellTesting/run`.
 
-To made your own test, you can configure the **command.txt**'s file.
+To made your own test, you can configure the **commands.txt**'s file in the **config** folder.<br/>
+`./MinishellTesting/config/commands.txt`
 
 ## How can i code new tests
 
