@@ -1,0 +1,80 @@
+#!/bin/python3
+
+import os
+import subprocess
+import math
+
+from my_color import *
+
+
+thisdir = os.path.dirname(os.path.realpath(__file__))
+
+f_command = f"{thisdir}/commands.txt"
+
+
+def create_bar(percentage: int, name: str) -> str:
+
+    show_percentage = (str(percentage) + "%").ljust(4) if percentage < 100 else "DONE".ljust(4)
+    number = math.ceil((percentage / 100) * 20)
+    fill = '=' * number
+    fill = fill[:-1] + '>' if percentage != 100 else fill
+    spaces = ' ' * (20 - number)
+
+    col = my_color.orange if percentage > 33 else my_color.red
+    # col = my_color.blue if percentage == 100 else ...
+    col = my_color.green if percentage > 66 else my_color.orange
+    bar = '[' + col + fill + spaces + my_color.default + ']'
+    ret = f"{show_percentage} {bar} {name}"
+    return ret
+
+
+def display(n: float, name: str):
+    print("\n{}\n".format(create_bar(round(n * 100), name)))
+
+def my_tests() -> float:
+    f = open(f_command, "r+")
+    array, name, i = [], "", 0
+    testing_cathegory = ""
+    beforecommand = ""
+
+    for command in f:
+        command = command[:-1] if command[-1] == '\n' else command
+
+        i += 1
+        if command[0:2] == "::":
+            i -= 1
+            continue
+        if command[0:4] == ">>> ":
+            name = command[4:len(command)]
+            if name.lower() == "end":
+                display(sum(array) / len(array), testing_cathegory)
+                array, name, testing_cathegory, i = [], "", "", 2
+            else:
+                testing_cathegory, i = name, 2
+            continue   
+        if command[0:2] == '$ ':
+            beforecommand = command[2:len(command)]
+            i -= 1
+            continue
+        if i % 3 == 0:
+            continue
+        if i % 3 == 1:
+            name = command
+            continue
+
+        name = name[2:]
+        valid_output = subprocess.getoutput(f"{command} | {beforecommand} tcsh")
+        your_output = subprocess.getoutput(f"{command} | {beforecommand} ./mysh")
+        beforecommand = ""
+
+        res = valid_output == your_output
+        array.append(res)
+        showing = f"{my_color.green}[S]{my_color.default}" if res else f"{my_color.red} [X]{my_color.default}"
+        showing = showing.ljust(16).rjust(17)
+        print(f"{showing} {name}")
+
+
+if __name__ == "__main__":
+    subprocess.run(["make", "-s", "re"])
+    subprocess.run(["make", "-s", "clean"])
+    my_tests()

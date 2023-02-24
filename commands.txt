@@ -1,0 +1,111 @@
+:: Read the readme file before adding new tests
+
+>>> Basics tests
+
+> Functionnal ls
+echo -ne "ls"
+
+> Bad ls
+echo -ne "ls nofile"
+
+> Multiple commands
+echo -ne "ls\nls"
+
+> Empty string
+echo -ne ""
+
+> Exit
+echo -ne "exit"
+
+> Really Exiting
+echo -ne "exit\nls"
+
+> Empty Env
+$ env -i
+echo -ne "ls"
+
+>>> End
+
+>>> Setenv Unsetenv tests
+
+> (Run) Setenv 1 value
+echo -ne "setenv foo"
+
+> (Run) Setenv 2 values
+echo -ne "setenv foo bar"
+
+> (Run) Unset 1 value
+echo -ne "unsetenv foo"
+
+> (Run) Unset 2 values
+echo -ne "unsetenv foo bar"
+
+> Unset Path
+echo -ne "ls\nunsetenv PATH\nls"
+
+>>> End
+
+>>> Cd Tests
+
+> (Run) Empty cd
+echo -ne "cd"
+
+> (Run) Root cd
+echo -ne "cd /"
+
+> (Run) Back cd
+echo -ne "cd .."
+
+> Empty cd
+echo -ne "ls\ncd\nls"
+
+> Normal cd
+echo -ne "ls\ncd lib\nls"
+
+> Root cd
+echo -ne "ls\ncd /\nls"
+
+> Back cd
+echo -ne "ls\ncd ..\nls"
+
+> Vague cd
+echo -ne "ls\ncd ~\nls"
+
+> Minus cd
+echo -ne "cd /\nls\ncd -\nls"
+
+>>> End
+
+>>> Error Messages
+
+> Bad command
+echo -ne "notcommand"
+
+> Mispell exit
+echo -ne "exitt"
+
+> Cd nofile
+echo -ne "cd nofile"
+
+> Cd file
+echo -ne "cd ./mysh"
+
+> Cd first minus
+echo -ne "cd -"
+
+> Setenv too many args
+echo -ne "setenv a a a"
+
+> Unsetenv too few args
+echo -ne "unsetenv"
+
+> Segfault
+echo -ne tests/execs/segfault.out
+
+> Broken
+echo -ne tests/execs/broken.out
+
+> Floating
+echo -ne tests/execs/floating.out
+
+>>> End
