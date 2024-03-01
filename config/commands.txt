@@ -2,18 +2,18 @@
 
 >>> Required
 
-> Functionnal ls
-echo -ne "ls"
+> Functionnal pwd
+echo -ne "pwd"
 
 > Multiple commands
-echo -ne "ls\nls"
+echo -ne "pwd\npwd"
 
 >>> End
 
 >>> Basics tests
 
-> Bad ls
-echo -ne "ls nofile"
+> Bad pwd
+echo -ne "pwd nofile"
 
 > Empty string
 echo -ne ""
@@ -22,11 +22,11 @@ echo -ne ""
 echo -ne "exit"
 
 > Exit
-echo -ne "exit\nls"
+echo -ne "exit\npwd"
 
 > Empty Env
 $ env -i
-echo -ne "ls"
+echo -ne "pwd"
 
 >>> End
 
@@ -45,7 +45,7 @@ echo -ne "unsetenv foo"
 echo -ne "unsetenv foo bar"
 
 > Unset Path
-echo -ne "ls\nunsetenv PATH\nls"
+echo -ne "pwd\nunsetenv PATH\npwd"
 
 >>> End
 
@@ -61,22 +61,22 @@ echo -ne "cd /"
 echo -ne "cd .."
 
 > Empty cd
-echo -ne "ls\ncd\nls"
+echo -ne "pwd\ncd\npwd"
 
 > Normal cd
-echo -ne "ls\ncd lib\nls"
+echo -ne "pwd\ncd lib\npwd"
 
 > Root cd
-echo -ne "ls\ncd /\nls"
+echo -ne "pwd\ncd /\npwd"
 
 > Back cd
-echo -ne "ls\ncd ..\nls"
+echo -ne "pwd\ncd ..\npwd"
 
 > Vague cd
-echo -ne "ls\ncd ~\nls"
+echo -ne "pwd\ncd ~\npwd"
 
 > Minus cd
-echo -ne "cd /\nls\ncd -\nls"
+echo -ne "cd /\npwd\ncd -\npwd"
 
 >>> End
 
