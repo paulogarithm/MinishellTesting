@@ -16,22 +16,19 @@ final_results = []
 
 def create_bar(percentage: int, name: str) -> str:
 
-    show_percentage = (str(percentage) + "%").ljust(4) if percentage < 100 else "Done".ljust(4)
+    show_percentage = (str(percentage) + "%").ljust(4) if percentage != 100 else "Done".ljust(4)
     number = math.ceil((percentage / 100) * 20)
-    fill = '=' * number
-    fill = fill[:-1] + '>' if percentage != 100 else fill
-    spaces = ' ' * (20 - number)
+    fill = '=' * number + '>' if percentage != 100 else ''
 
-    col = my_color.orange if percentage > 33 else my_color.red
-    # col = my_color.blue if percentage == 100 else ...
-    col = my_color.green if percentage > 66 else my_color.orange
-    bar = '[' + col + fill + spaces + my_color.default + ']'
+    col = my_color.green if percentage > 66 else my_color.orange if percentage > 33 else my_color.red
+    bar = '[' + col + fill.ljust(20) + my_color.default + ']'
     ret = f"{show_percentage} {bar} {name}"
     return ret
 
 
 def display(n: float, name: str):
     print("{}".format(create_bar(round(n * 100), name)))
+
 
 def my_tests() -> float:
     f = open(f_command, "r+")
@@ -56,7 +53,7 @@ def my_tests() -> float:
             else:
                 testing_cathegory, i = name, 2
                 print(testing_cathegory.upper() + ":")
-            continue   
+            continue
         if command[0:2] == '$ ':
             beforecommand = command[2:len(command)]
             i -= 1
@@ -88,11 +85,12 @@ def my_tests() -> float:
                 box2, size2 = box_that("Correct", valid_output.split('\n'), size1)
             f.write(box1)
             f.write(box2 + "\n\n")
-
+            f.close()
 
         showing = f"{my_color.green}[S]{my_color.default}" if res else f"{my_color.red} [X]{my_color.default}"
         showing = showing.ljust(16).rjust(17)
         print(f"{showing} {name}")
+    f.close()
 
 
 if __name__ == "__main__":
