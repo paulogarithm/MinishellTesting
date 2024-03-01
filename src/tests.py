@@ -18,7 +18,7 @@ def create_bar(percentage: int, name: str) -> str:
 
     show_percentage = (str(percentage) + "%").ljust(4) if percentage != 100 else "Done".ljust(4)
     number = math.ceil((percentage / 100) * 20)
-    fill = '=' * number + '>' if percentage != 100 else ''
+    fill = '=' * number + ('>' if percentage != 100 else '')
 
     col = my_color.green if percentage > 66 else my_color.orange if percentage > 33 else my_color.red
     bar = '[' + col + fill.ljust(20) + my_color.default + ']'
