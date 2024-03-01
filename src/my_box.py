@@ -1,4 +1,4 @@
-def get_longest(table: list[str]) -> str:
+def get_longest(table) -> str:
     max_len = -1
     res = ""
     for e in table: 
@@ -9,7 +9,7 @@ def get_longest(table: list[str]) -> str:
     return res
 
 
-def box_that(name: str = "", table: list[str] = [], size: int = -1) -> str:
+def box_that(name: str = "", table = [], size: int = -1) -> str:
     longest = get_longest(table)
     char = ['─', '│', '┌', '┐', '└', '┘']
     longlen = len(longest) if len(longest) > size else size
