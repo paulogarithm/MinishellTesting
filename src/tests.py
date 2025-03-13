@@ -65,8 +65,8 @@ def my_tests() -> float:
             continue
 
         name = name[2:]
-        valid_output = subprocess.getoutput(f"{command} | {beforecommand} tcsh")
-        your_output = subprocess.getoutput(f"{command} | {beforecommand} ./mysh")
+        valid_output = subprocess.getoutput(f"/bin/{command} | {beforecommand} tcsh")
+        your_output = subprocess.getoutput(f"/bin/{command} | {beforecommand} ./mysh")
         beforecommand = ""
 
         res = valid_output == your_output
